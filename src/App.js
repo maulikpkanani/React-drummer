@@ -1,28 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Display from './components/Display/Display'
+import Keys from './components/Keys/Keys'
+import './App.css'
 
 class App extends Component {
-  render() {
+  state = {
+    display: 'Click or Press a key'
+  }
+
+  handleDisplayName = name => {
+    this.setState({
+      display: name
+    })
+  }
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className='container'>
+        <header className='header'>
+          <h1>Drummer</h1>
         </header>
+        <div id='drum-machine'>
+          <Display display={this.state.display} />
+          <Keys onDisplayName={this.handleDisplayName} />
+        </div>
+        <footer className='footer'>
+          <span>
+            Created by:{' '}
+            <a
+              className='footer-link'
+              href='#'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Maulik Kanani
+            </a>
+          </span>
+          <span> | </span>
+          <span>
+            <a
+              className='footer-link'
+              href='#'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              View source code
+            </a>
+          </span>
+        </footer>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
